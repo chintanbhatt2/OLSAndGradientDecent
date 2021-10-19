@@ -4,7 +4,10 @@ import matplotlib.pyplot as plt
 
 
 class LRGD:
-    def __init__(self) -> None:
-        pass
+    csv = None
+    def __init__(self, path) -> None:
+        csv = pd.read_csv(path)
     def __eq__(self, o: object) -> bool:
+        pass
+    def print(self) -> None:
         pass
