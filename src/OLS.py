@@ -19,6 +19,8 @@ class OLS:
         self.csv1 = pd.read_csv(path1, index_col=False)
         self.csv2 = pd.read_csv(path2, index_col=False)
         
+    def readFile(self, path:str):
+        self.csv1 = pd.read_csv(path, index_col=False)
     def __init__(self) -> None:
         pass
     def __eq__(self, o: object) -> bool:
@@ -26,11 +28,17 @@ class OLS:
 
 
     def setUpAxes(self, x:str, y:str):
-        self.xAxis = self.csv1[x]
-        self.xLabel = x
-        self.yAxis = self.csv2[y]
-        self.yLabel = y
-        
+        if self.csv2 != None:
+            self.xAxis = self.csv1[x]
+            self.xLabel = x
+            self.yAxis = self.csv2[y]
+            self.yLabel = y
+        else:
+            self.xAxis = self.csv1[x]
+            self.xLabel = x
+            self.yAxis = self.csv1[y]
+            self.yLabel = y
+
 
     def classify(self):
         model = sm.OLS(self.xAxis, self.yAxis);
